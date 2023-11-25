@@ -1,25 +1,25 @@
 apiVersion: skaffold/v4beta3
 kind: Config
 manifests:
-    rawYaml:
-        - ./infra/k8s/*
+  rawYaml:
+    - ./infra/k8s/*
 build:
-    local:
-        push: false
-    artifacts:
-        - image: vpawar01/auth
-          context: auth
-          docker:
-              dockerfile: Dockerfile
-          sync:
-              manual:
-                  - src: 'src/**/*.ts'
-                    dest: .
-        - image: vpawar01/client
-          context: client
-          docker:
-              dockerfile: Dockerfile
-          sync:
-              manual:
-                  - src: '**/*.js'
-                    dest: .
+  local:
+    push: false
+  artifacts:
+    - image: vickypawar17/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .
+    - image: vickypawar17/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.js"
+            dest: .
